@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <meta
+      name="description"
+      content="圍棋 9×9：落子、氣、提子、禁著、數子。支援雙人與對 AI。純前端 Playgrounds SAM。"
+    />
+    <title>圍棋</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚫</text></svg>"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main>
+      <header class="hero">
+        <h1>圍棋</h1>
+        <p class="tagline">9×9 首刀 · 氣提禁著 · 數子定勝</p>
+      </header>
+
+      <section class="meter" aria-label="狀態">
+        <div class="meter-item">
+          <span class="label">輪到</span>
+          <strong id="turn">黑方落子</strong>
+        </div>
+        <div class="meter-item">
+          <span class="label">提子</span>
+          <strong id="captures">黑提 0 · 白提 0</strong>
+        </div>
+        <div class="meter-item">
+          <span class="label">模式</span>
+          <strong id="mode">雙人</strong>
+        </div>
+        <div class="meter-item">
+          <span class="label">最佳</span>
+          <strong id="best">0</strong>
+        </div>
+        <div class="meter-actions">
+          <button type="button" id="btn-mute" class="secondary" aria-pressed="true">
+            音效開
+          </button>
+        </div>
+      </section>
+
+      <div class="controls">
+        <button type="button" id="btn-new">新局</button>
+        <button type="button" id="btn-pass" class="secondary">虛手</button>
+        <button type="button" id="btn-score" class="secondary">數子終局</button>
+        <button type="button" id="btn-mode" class="secondary">切換 雙人／AI</button>
+      </div>
+
+      <p id="result" class="result" role="status"></p>
+
+      <div class="stage">
+        <canvas
+          id="board"
+          width="360"
+          height="360"
+          role="img"
+          aria-label="圍棋棋盤"
+        ></canvas>
+      </div>
+
+      <p class="hint">
+        黑先白後，點棋盤交叉點落子。氣盡被提；自殺與打劫為禁著。雙方連下兩手「虛手」或按「數子終局」即依台灣／中國簡化規則清死子後數空＋子，白方貼
+        5.5 子。棋盤與棋子全以 Canvas 程式繪製（木紋盤、黑白棋子），音效為 Web Audio 合成。
+      </p>
+    </main>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
